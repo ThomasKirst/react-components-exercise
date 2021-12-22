@@ -1,5 +1,8 @@
 /* ---- IMPORTS ---- */
 import { useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import RecipeCard from './components/RecipeCard';
 
 function App() {
   /* ---- NORMALES JS ---- */
@@ -32,34 +35,16 @@ function App() {
   return (
     <div>
       {/* HEADER */}
-      <header>
-        <h1>Recipes for React</h1>
-        <p>Time until your chosen meal is ready: {cookingTimer}</p>
-      </header>
+      <Header timer={cookingTimer} />
       <main>
         {/*  REZEPTKARTEN */}
 
         {recipesArchive.map((recipe, index) => (
-          <article key={index}>
-            <h2>{recipe.title}</h2>
-            <p>
-              Difficulty is {recipe.difficulty} and takes {recipe.duration}
-              minutes.
-            </p>
-            <button onClick={() => setTimer(recipe.duration)}>Set timer</button>
-            {/* sobald wir hier etwas als Parameter übergeben möchten, müssen wir die ausführliche Schreibweise nutzen "() =>" */}
-          </article>
+          <RecipeCard key={index} singleRecipe={recipe} onSetTimer={setTimer} />
         ))}
       </main>
       {/* FOOTER */}
-      <footer>
-        <nav>
-          <a href="/">Home</a>{' '}
-          {/* Dummy Links - sollten in React Router durch NavLinks ersetzt werden */}
-          <a href="/click">Page 1</a>
-          <a href="/characters">Page 2</a>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   );
 }

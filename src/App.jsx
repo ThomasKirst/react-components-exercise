@@ -40,7 +40,7 @@ function App() {
             <h2>{recipe.title}</h2>
             <p>
               Difficulty is {recipe.difficulty} and takes {recipe.duration}{' '}
-              minutes to make.
+              minutes.
             </p>
             <button onClick={() => setCookingTimer(recipe.duration)}>
               Set timer

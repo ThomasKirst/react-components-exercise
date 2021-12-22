@@ -23,6 +23,10 @@ function App() {
 
   const [cookingTimer, setCookingTimer] = useState(0);
 
+  function setTimer(recipeDuration) {
+    setCookingTimer(recipeDuration);
+  }
+
   /*   ---- JSX-Teil ---- */
   /* Alles, was nicht aussieht wie HTML oder Textinhalt ist, muss in geschweifte Klammern! "Fenster zu normalem JS" */
   return (
@@ -39,12 +43,11 @@ function App() {
           <article key={index}>
             <h2>{recipe.title}</h2>
             <p>
-              Difficulty is {recipe.difficulty} and takes {recipe.duration}{' '}
+              Difficulty is {recipe.difficulty} and takes {recipe.duration}
               minutes.
             </p>
-            <button onClick={() => setCookingTimer(recipe.duration)}>
-              Set timer
-            </button>
+            <button onClick={() => setTimer(recipe.duration)}>Set timer</button>
+            {/* sobald wir hier etwas als Parameter übergeben möchten, müssen wir die ausführliche Schreibweise nutzen "() =>" */}
           </article>
         ))}
       </main>
